@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">threads</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="pool">thread number</string>
+    <string name="zero">1</string>
+</resources>
