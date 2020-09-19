@@ -21,15 +21,15 @@ MainActivity.java
 按下Start同时请求的4个任务,每个任务更新一个ProgressBar。
 ### 4.1 1个线程3个队列
 因为请求的任务有4个，但队列只有3个，在请求第4个任务时队列已经全部在使用中，因此Activity阻塞，直到3个任务中的任意一个完成后才有响应。同时因为Activity阻塞，因此第一个ProgressBar不会更新。<br />
-![image](https://github.com/kmblack1/threads/Blocking.gif)
+![image](image/Blocking.gif)
 
 ### 4.2 2个线程6个队列
 一次同时更新两个ProgressBar。其它2个任务在排队，待前面的任务完成后，后面的任务自动运行。<br />
-![image](https://github.com/kmblack1/threads/two.gif)
+![image](image/two.gif)
 ### 4.3 3个线程9个队列
 同2个线程6个队列差不多，区别就是可同时更新3个ProgressBar。<br />
-![image](https://github.com/kmblack1/threads/three.gif)
+![image](image/three.gif)
 ### 4.4 4个线程12个队列
 此时线程数已经和请求的任务数一至，可一次更新完成。<br />
-![image](https://github.com/kmblack1/threads/four.gif)
+![image](image/four.gif)
 
