@@ -248,10 +248,9 @@ public abstract class ThreadPool {
             this.reentrant.lock();
             next = ((this.tail + 1) % this.queueMax);
             queueItem = this.items[this.tail];
-            queueItem.addAction(action, parcelable);
             if (!queueItem.complete)
                 this.condNotFull.await();
-            queueItem.complete = false;
+            queueItem.addAction(action, parcelable);
             this.tail = next;
             this.cond.signal();    //发送信号执行任务
             this.reentrant.unlock();
