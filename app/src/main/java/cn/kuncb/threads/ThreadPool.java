@@ -166,7 +166,11 @@ public abstract class ThreadPool {
             this.action = action;
             if (null != parcelable) {
                 Parcel parcel = Parcel.obtain();
-                parcel.writeParcelable(parcelable, 0);
+				//这个方法会额外增加一个类名称(第一项)
+                //反序列化时第一个read读取的是类名称
+                //可以根据需求来决定具体使用那一个方法
+                //parcel.writeParcelable(parcelable, 0);
+                parcelable.writeToParcel( parcel, 0);
                 try {
                     this.stream.reset();
                     this.stream.write(parcel.marshall());
