@@ -62,6 +62,10 @@ public abstract class ThreadPool {
      */
     protected void stop() {
         this.queue.reentrant.lock();
+		 if (!this.queue.isrun) {
+            this.queue.reentrant.unlock();
+            return;
+        }
         this.queue.isrun = false;
         this.queue.cond.signalAll();
         this.queue.condNotFull.signalAll();
